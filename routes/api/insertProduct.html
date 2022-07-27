@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body style=" direction:rtl; margin-right: 50px;">
+ 
+<form action="store/admin/product/insertProduct" enctype="multipart/form-data" method="POST"> 
+    <div  style="width: 300px;">
+      <label for="productLevel" style="float: right;">سطح کالا: </label> 
+      <input type="text" name="productLevel" id="productLevel"  style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+    <label for="productImg" style="float: right;">عکس کالا: </label> 
+    <input type="file" name="productImg" id="productImg" multiple style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+    <label for="catalog" style="float: right;">کاتالوگ: </label> 
+    <input type="file" name="catalog" id="catalog" multiple style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+    <label for="ENcatalog" style="float: right;">کاتالوگ انگلیسی: </label> 
+    <input type="file" name="ENcatalog" id="ENcatalog" multiple style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+    <label for="usermanual" style="float: right;">راهنمای کاربر: </label> 
+    <input type="file" name="usermanual" id="usermanual" multiple style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+    <label for="productModel" style="float: right;">مدل: </label> 
+    <input type="file" name="productModel" id="productModel" multiple style="float: left;"/>
+    </div>
+    <br><br> 
+  <div  style="width: 300px;">
+      <label for="product_model" style="float: right;">مدل کالا: </label> 
+      <input type="text" name="product_model" id="product_model"  style="float: left;"/>
+    </div>
+  <br><br> 
+  <div  style="width: 300px;">
+      <label for="active" style="float: right;">فعال: </label> 
+      <input type="text" name="active" id="active"  style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+      <label for="description" style="float: right;">نام: </label> 
+      <input type="text" name="name" id="name"  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="ENname" style="float: right;">نام انگلیسی: </label> 
+      <input type="text" name="ENname" id="ENname"  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="parentId" style="float: right;">پرنت: </label> 
+      <input type="text" name="parentId" id="parentId"  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="price" style="float: right;">قیمت: </label> 
+      <input type="text" name="price" id="price"  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="description" style="float: right;">توضیحات: </label> 
+      <input type="text" name="description" id="description  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="ENdescription" style="float: right;"> توضیحات انگلیسی: </label> 
+      <input type="text" name="ENdescription" id="ENdescription  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="shortdescription" style="float: right;">توضیحات سه خطی(با کاما جدا کنید): </label> 
+      <input type="text" name="shortdescription" id="shortdescription  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="ENshortdescription" style="float: right;">توضیحات سه خطی انگلیسی(با کاما جدا کنید): </label> 
+      <input type="text" name="ENshortdescription" id="ENshortdescription  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="descriptionproduct" style="float: right;">توضیحات محصول: </label> 
+      <input type="text" name="descriptionproduct" id="descriptionproduct  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="ENdescriptionproduct" style="float: right;">توضیحات محصول  انگلیسی: </label> 
+      <input type="text" name="ENdescriptionproduct" id="ENdescriptionproduct  style="float: left;"/>
+    </div>
+    <br><br>
+    <!-- <div  style="width: 300px;">
+      <label for="installationarea" style="float: right;">محل های نصب(با کاما جدا کنید): </label> 
+      <input type="text" name="installationarea" id="installationarea  style="float: left;"/>
+    </div>
+    <br><br> -->
+    <div  style="width: 300px;">
+      <label for="discount" style="float: right;">تخفیف: </label> 
+      <input type="text" name="discount" id="discount  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="InstallationPrice" style="float: right;">هزینه نصب و راه اندازی: </label> 
+      <input type="text" name="InstallationPrice" id="InstallationPrice  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="deliveryPrice" style="float: right;">هزینه تحویل: </label> 
+      <input type="text" name="deliveryPrice" id="deliveryPrice  style="float: left;"/>
+    </div>
+    <br><br>
+    <div  style="width: 300px;">
+      <label for="profit" style="float: right;">سود: </label> 
+      <input type="text" name="profit" id="profit"  style="float: left;"/>
+    </div>
+    <br><br>
+    
+    <div  style="width: 600px;">
+      <label style="float: right;">ویژگی ها: </label> 
+      <br><br>
+    <div style="float: right;">
+      <label for="category" style="float: right;">دسته بندی: </label> 
+      <input type="text" name="category" id="category"  style="float: left;"/>
+      <br><br>
+
+      <label style="float: right;">مقادیر: </label> 
+      <br><br>
+      <label for="name" style="float: right;">نام: </label> 
+      <input type="text" name="name" id="name"  style="float: left;"/>
+      <br><br>
+      <label for="title" style="float: right;">عنوان: </label> 
+      <input type="text" name="title" id="title"  style="float: left;"/>
+      <br><br>
+      <label for="isDefault" style="float: right;">پیشفرض: </label> 
+      <input type="text" name="isDefault" id="isDefault"  style="float: left;"/>
+      <br><br>
+      <br><br>
+
+      <label for="name" style="float: right;">نام: </label> 
+      <input type="text" name="name" id="name"  style="float: left;"/>
+      <br><br>
+      <label for="title" style="float: right;">عنوان: </label> 
+      <input type="text" name="title" id="title"  style="float: left;"/>
+      <br><br>
+      <label for="isDefault" style="float: right;">پیشفرض: </label> 
+      <input type="text" name="isDefault" id="isDefault"  style="float: left;"/>
+    </div>
+      <!-- <br><br>
+      <br><br> -->
+      <div style="float: left;">
+        <label for="category" style="float: right;">دسته بندی: </label> 
+        <input type="text" name="category" id="category"  style="float: left;"/>
+        <br><br>
+
+        <label style="float: right;">مقادیر: </label> 
+        <br><br>
+        <label for="name" style="float: right;">نام: </label> 
+        <input type="text" name="name" id="name"  style="float: left;"/>
+        <br><br>
+        <label for="title" style="float: right;">عنوان: </label> 
+        <input type="text" name="title" id="title"  style="float: left;"/>
+        <br><br>
+        <label for="isDefault" style="float: right;">پیشفرض: </label> 
+        <input type="text" name="isDefault" id="isDefault"  style="float: left;"/>
+    
+      <br><br>
+      <br><br>
+
+      <label for="name" style="float: right;">نام: </label> 
+      <input type="text" name="name" id="name"  style="float: left;"/>
+      <br><br>
+      <label for="title" style="float: right;">عنوان: </label> 
+      <input type="text" name="title" id="title"  style="float: left;"/>
+      <br><br>
+      <label for="isDefault" style="float: right;">پیشفرض: </label> 
+      <input type="text" name="isDefault" id="isDefault"  style="float: left;"/>
+      <br><br>
+      <br><br>
+    </div>
+    <br><br>
+    <br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+<div>
+      <label style="float: right;">قیمت گذاری: </label>
+      <br><br>
+
+      <label for="price1" style="float: right;">7.4KW , 7m cable: </label>
+      <input type="text" name="price1" id="price1"  style="float: left;"/>
+      <br><br>
+
+      <label for="price2" style="float: right;">7.4KW, 5m cable: </label>
+      <input type="text" name="price2" id="price2"  style="float: left;"/>
+      <br><br>
+
+      <label for="price3" style="float: right;">7.3KW, 7m cable: </label>
+      <input type="text" name="price3" id="price3"  style="float: left;"/>
+      <br><br>
+
+      <label for="price4" style="float: right;">7.3KW, 5m cable: </label>
+      <input type="text" name="price4" id="price4"  style="float: left;"/>
+      <br><br>
+    </div>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+      <input type="submit" value="ثبت محصول"  style="float: left;"/>
+    </div>
+</form>
+ 
+</body>
+</html>

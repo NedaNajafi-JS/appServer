@@ -1,0 +1,1812 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My User Project CRUD",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5001",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/schedule/getChargingForUser": {
+      "get": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "تمام شارژهای زمانبدی شده کاربر را برمیگرداند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          }
+        }
+      }
+    },
+    "/api/schedule/new": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "ایجاد یک شارژ زمانبندی شده جدید",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "startTime",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "endTime",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "cpID",
+            "in": "body",
+            "description": "شناسه شارژر"
+          },
+          {
+            "name": "connector",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "vehicleType",
+            "in": "body",
+            "description": "EBUS, EBike, EV"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/edit": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": " . درصورتیکه شارژ زمانبدی شده در حالت انتظار باشد، کاربر میتواند هم تاریخ شروع هم تاریخ پایان را ادیت کند. درصورتی که در حال شارژ باشد، فقط میتواند تاریخ پایان را ادیت کند. در غیراینصورت هیچیک را نمیتواند ادیت کند.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "description": "شناسه شارژ زمانبدی شده"
+          },
+          {
+            "name": "startTime",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "endTime",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/getChargingForCP": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "با دریافت شناسه شارژر در ورودی، تمامی شارژهای درحال انجام کاربر را برمیگرداند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "cpID",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/getByStatusForUser": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "با دریافت وضعیت از ورودی، شارژهیا زمانبدی شده کاربر که وضعیتش این است را برمیگرداند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/getByStatusForCP": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "با دریافت وضعیت و شارژر از ورودی، شارژهای زمانبدی شده کاربر را بر اساس اطلاعات ورودی برمیگرداند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "cpID",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/delete/scheduleId": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "حذف شارژ زمانبدی شده",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "description": "شناسه شارژ زمانبندی شده"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/delete/AllForUser": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "همه شارژهای زمانبدی شده کاربر را که هنوز درحال انتظار هستند، حذف میکند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/delete/AllForCPConnector": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": "با دریافت شارژر و کانکتور در وردی، همه شارژهای زمانبدی شده در حال انتظار شارژر را حذف میکند.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "cpID",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "connector",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/repeatWeekly": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": ". فقط تعیین میکند شارژ زمانبدی شده هر هفته تکرار شود یا خیرتکرار یا عدم هفتگی شارژ زمانبدی شده",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "repeatWeekly",
+            "in": "body",
+            "description": "boolean"
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "description": "شناسه شارژ زمانبدی شده"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/schedule/repeatDaily": {
+      "post": {
+        "tags": [
+          "Charge Schedule"
+        ],
+        "summary": ". فقط تعیین میکند شارژ زمانبدی شده هر روز تکرار شود یا خیرتکرار یا عدم روزانه شارژ زمانبدی شده",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "repeatDaily",
+            "in": "body",
+            "description": "boolean"
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "description": "شناسه شارژ زمانبدی شده"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/removeDetail": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": ". هرکاربر فقط یک سبد خرید فعال داردحذف از سبد خرید",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "detailID",
+            "in": "body",
+            "description": "شناسه سطری که قرار است حذف شود"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/uploadDocs": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "بارگذاری مدارک کاربر زمانی که میخواهد سبد خرید را ثبت نهایی کند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": "شناسه عملیات"
+          },
+          {
+            "name": "UploadDoc",
+            "in": "body",
+            "description": "تعیین کننده این است که کاربر میخواهد مدارک جدید آپلود کند، یا میخواهد رفع نقص مدرک کند"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "postalCode",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "files",
+            "in": "body",
+            "description": "فایلهایی که باید آپلود کند"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus1": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "سفارش ثبت و در حال بررسی توسط کارشناسان می باشد",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus2": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "reject operation",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "rejectDescription",
+            "in": "body",
+            "description": "دلیل ریجکت عملیات"
+          },
+          {
+            "name": "addressStatus",
+            "in": "body",
+            "description": "آیا دلیل ریجکتی عملیات، آدرس بوده است"
+          },
+          {
+            "name": "parkingPic",
+            "in": "body",
+            "schema":{
+              "type": "object",
+              "properties":{
+                "status": {
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "آیا ریجکتی به دلیل عکس پارکینگ بوده است"
+          },
+          {
+            "name": "powerMeterPic",
+            "in": "body",
+            "schema":{
+              "type": "object",
+              "properties":{
+                "status": {
+                  "type": "integer"
+                }
+              }
+            },
+            "description": "آیا ریجکتی به دلیل عکس کنتور برق بوده است"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus3": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "تایید عملیات",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus4": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "پرداخت با موفقیت انجام شد و سفارش در حال آماده سازی می‌باشد.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "expectedDeliveryDays",
+            "in": "body",
+            "description": "چند روز دیگر سفارش آماده میشود"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus5": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "سفارش در حال آماده سازی برای ارسال و نصب می‌باشد.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus6": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "سفارش برای نصب ارسال شده است",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/changeToStatus7": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "نصب انجام شد.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/getAllOrders": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "ادمین همه سفارش ها را دریافت میکند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "sort",
+            "in": "body",
+            "description": "1 or -1 ascending or descending"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "فیلتر بر اساس وضعیت عملیات"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/getAllOrdersExcel": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "تولید فرمت خروجی برای اکسل سفارش ها",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/getUserOrders": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "دریافت سفارشهای کاربر با فیلتر بر اساس وضعیت سفارش",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "status",
+            "in": "body",
+            "description": "فیلتر بر اساس وضعیت سفارش. اگر ارسال نشود، همه سفارشهای کاربر برگردانده میشود"
+          },
+          {
+            "name": "page",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "limit",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/operation/getOrder": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "دریافت سفارش کاربر",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "operation_id",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/charger/addAttribute": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن یه سفارشی سازی جدید به کالا",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "product_id",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "all_attrs",
+            "in": "body",
+            "schema": {
+              "type": "array"
+            },
+            "description": "آرایه ای از سفارشی سازی ها(هر سفارشی سازی، جایگشتی از ویژگی هاست)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/charger/retrievePrice": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "دریافت قیمت به ازای یک سفارشی سازی",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "product_id",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "attrs",
+            "in": "body",
+            "schema": {
+              "type": "array"
+            },
+            "description": "یک سفارشی سازی که قیمتش را میخواهیم"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/login/login": {
+      "post": {
+        "tags": [
+          "store admin"
+        ],
+        "summary": "توکن برگردانده میشود",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/insertParent": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "کلا کالا سه سطح دارد، طی این مسیر کالای سطح 1 و 2 ایجاد میشوند.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productLevel",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "parentId",
+            "in": "body",
+            "description": "اگر کالای سطح 1 بودف نیازی به ارسال این فیلد نیست. درغیر اینصورت ارسال این فیلد اجباری است"
+          },
+          {
+            "name": "file",
+            "in": "file",
+            "description": "عکس محصول"
+          },
+          {
+            "name": "active",
+            "in": "body",
+            "description": "فعال یا غیرفعال بودن"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "ENname",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/insertProduct/basics": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن محصول سطح آخر کلا چند مرحله دارد، که مرحله اول آن اضافه کردن اطلاعات اولیه محصول است",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "product_model",
+            "in": "body",
+            "description": "فیلد اجباری"
+          },
+          {
+            "name": "parentId",
+            "in": "body",
+            "description": "این فیلد اجباری است"
+          },
+          {
+            "name": "image",
+            "in": "file",
+            "description": "عکس محصول"
+          },
+          {
+            "name": "active",
+            "in": "body",
+            "description": " فعال یا غیرفعال بودن در فروشگاه"
+          },
+          {
+            "name": "activeproduct",
+            "in": "body",
+            "description": "فعال یا غیرفعال بودن در تب محصولات"
+          },
+          {
+            "name": "UploadDoc",
+            "in": "body",
+            "description": "اینکهه آیا این محصول نیازی به این دارد که کاربر محصول آپلود کند یا خیر"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "ENname",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "قیمت محصول باید به یورو وارد شود"
+          },
+          {
+            "name": "discount",
+            "in": "body",
+            "description": "تخفیف محصولبه درصد و بصورت عددی"
+          },
+          {
+            "name": "profit",
+            "in": "body",
+            "description": "سود محصول"
+          },
+          {
+            "name": "InstallationPrice",
+            "in": "body",
+            "description": "هزینه نصب"
+          },
+          {
+            "name": "deliveryPrice",
+            "in": "body",
+            "description": "هزینه تحویل"
+          },
+          {
+            "name": "installationarea",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "ENtitle": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "محل های نصب"
+          },
+          {
+            "name": "features",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "ENvalue": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "ویژگی ها"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/insertProduct/descriptions": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن فیلدهایی که مدل توضیحی دارند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "description",
+            "in": "body",
+            "description": "توضیحاتی که در فروشگاه نمایش داده میشود"
+          },
+          {
+            "name": "ENdescription",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "shortdescription",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": "توضیحات سه خطی"
+          },
+          {
+            "name": "ENshortdescription",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "description": ""
+          },
+          {
+            "name": "descriptionproduct",
+            "in": "body",
+            "description": " توضیحاتی که در تب محصولات نمایش داده میشود"
+          },
+          {
+            "name": "ENdescriptionproduct",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "FAQ",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "ENfaq",
+            "in": "body",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/insertProduct/attributes": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن فیلدهایی که مدل توضیحی دارند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "attributes",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "force": {
+                    "type": "boolean"
+                  },
+                  "valid": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "values": {
+                    "type": "array",
+                    "items": {
+                      "type":"object",
+                      "properties": {
+                        "isDefault": {
+                          "type": "boolean"
+                        },
+                        "name": {
+                          "type": "boolean"
+                        },
+                        "title": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "ویژگی ها"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/insertProduct/properties": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "properties",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "categoryId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "boolean"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "ENvalue": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "ENtitle": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "ویژگی ها"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/editParent": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "فقط وضعیت فعال و غیرفعال بودن محصول و عکس اش امکان ادیت دارند",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "_id",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "imgChanged",
+            "in": "body",
+            "description": "boolean"
+          },
+          {
+            "name": "file",
+            "in": "file",
+            "description": "عکس محصول"
+          },
+          {
+            "name": "active",
+            "in": "body",
+            "description": "فعال یا غیرفعال بودن"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/productEdit/basics": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن محصول سطح آخر کلا چند مرحله دارد، که مرحله اول آن اضافه کردن اطلاعات اولیه محصول است",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "product_model",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "image",
+            "in": "file",
+            "description": "عکس محصول"
+          },
+          {
+            "name": "active",
+            "in": "body",
+            "description": " فعال یا غیرفعال بودن در فروشگاه"
+          },
+          {
+            "name": "activeproduct",
+            "in": "body",
+            "description": "فعال یا غیرفعال بودن در تب محصولات"
+          },
+          {
+            "name": "UploadDoc",
+            "in": "body",
+            "description": "اینکهه آیا این محصول نیازی به این دارد که کاربر محصول آپلود کند یا خیر"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "ENname",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "price",
+            "in": "body",
+            "description": "قیمت محصول باید به یورو وارد شود"
+          },
+          {
+            "name": "discount",
+            "in": "body",
+            "description": "تخفیف محصولبه درصد و بصورت عددی"
+          },
+          {
+            "name": "profit",
+            "in": "body",
+            "description": "سود محصول"
+          },
+          {
+            "name": "InstallationPrice",
+            "in": "body",
+            "description": "هزینه نصب"
+          },
+          {
+            "name": "deliveryPrice",
+            "in": "body",
+            "description": "هزینه تحویل"
+          },
+          {
+            "name": "installationarea",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "ENtitle": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "محل های نصب"
+          },
+          {
+            "name": "features",
+            "in": "body",
+            "schema":{
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "ENvalue": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": "ویژگی ها"
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/productEdit/installationArea": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن محصول سطح آخر کلا چند مرحله دارد، که مرحله اول آن اضافه کردن اطلاعات اولیه محصول است",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "deleted_ids",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"string"
+              }
+            },
+            "description": "آرایه ای از شناسه های آیتم هایی که باید حذف شوند"
+          },
+          {
+            "name": "edited",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "_id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "ENtitle": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "name": "inserted",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "name": {
+                    "type": "string"
+                  },
+                  "ENtitle": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/productEdit/features": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "اضافه کردن محصول سطح آخر کلا چند مرحله دارد، که مرحله اول آن اضافه کردن اطلاعات اولیه محصول است",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "deleted_ids",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"string"
+              }
+            },
+            "description": "آرایه ای از شناسه های آیتم هایی که باید حذف شوند"
+          },
+          {
+            "name": "edited",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "_id": {
+                    "type": "string"
+                  },
+                  "ENvalue": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": ""
+          },
+          {
+            "name": "inserted",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "ENvalue": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    },
+    "/api/store/admin/product/productEdit/attributes": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "params",
+            "description": "user token"
+          },
+          {
+            "name": "productId",
+            "in": "body",
+            "description": ""
+          },
+          {
+            "name": "deleted_ids",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"string"
+              }
+            },
+            "description": "آرایه ای از شناسه های آیتم هایی که باید حذف شوند"
+          },
+          {
+            "name": "deleted_ids_values",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"string"
+              }
+            },
+            "description": "آرایه ای از شناسه های valueهایی که باید حذف شوند"
+          },
+          {
+            "name": "edited",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type":"object",
+                "properties":{
+                  "_id": {
+                    "type": "string"
+                  },
+                  "valueName": {
+                    "type": "string"
+                  },
+                  "valueTitle": {
+                    "type": "string"
+                  },
+                  "isDefault": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "status": "Success"
+          },
+          "400": {
+            "status": "fail"
+          },
+          "401": {
+            "status": "unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
