@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ثبت ویژگی شارژر</title>
+</head>
+<body style=" direction:rtl; margin-right: 50px;">
+ 
+<form action="addAttribute" enctype="multipart/form-data" method="POST"> 
+    <div  style="width: 300px;">
+      <label for="attribute_id" style="float: right;">شناسه شارژر: </label> 
+      <input type="text" name="attribute_id" id="attribute_id"  style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+    <label for="name" style="float: right;">نام مدل: </label> 
+    <input type="text" name="name" id="name"  style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+    <label for="sapcode" style="float: right;">کد SAP: </label> 
+    <input type="text" name="sapcode" id="sapcode"  style="float: left;"/>
+    </div>
+    <br><br> 
+  
+  <div  style="width: 300px;">
+      <label for="attrs" style="float: right;">فیلدها: </label> 
+      <input type="text" name="attrs" id="attrs"  style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+      <label for="price" style="float: right;">قیمت: </label> 
+      <input type="text" name="price" id="price"  style="float: left;"/>
+    </div>
+    <br><br>
+  <div  style="width: 300px;">
+      <input type="submit" value="ثبت شارژر"  style="float: left;"/>
+    </div>
+</form>
+ 
+<br><br>
+<br><br>
+<br><br>
+
+<form action="retrievePrice" enctype="multipart/form-data" method="POST"> 
+  <div  style="width: 300px;">
+    <label for="attribute_id" style="float: right;">شناسه شارژر: </label> 
+    <input type="text" name="attribute_id" id="attribute_id"  style="float: left;"/>
+  </div>
+<br><br>
+
+
+<div  style="width: 300px;">
+    <label for="attrs" style="float: right;">فیلدها: </label> 
+    <input type="text" name="attrs" id="attrs"  style="float: left;"/>
+  </div>
+<br><br>
+
+<div  style="width: 300px;">
+    <input type="submit" value="دریافت قیمت"  style="float: left;"/>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+<body style=" direction:rtl; margin-right: 50px;">
+   
+ 
+<form action="/api/store/operation/uploadDocs" enctype="multipart/form-data" method="POST"> 
+    <div  style="width: 300px;">
+      <label for="operation_id" style="float: right;">operation_id : </label> 
+      <input type="text" name="operation_id" id="operation_id"  style="float: left;"/>
+
+      <label for="address" style="float: right;">address : </label> 
+      <input type="text" name="address" id="address"  style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+    <input type="file" name="parkingPic" id="parkingPic" multiple style="float: left;"/>
+    <input type="file" name="powerMeterPic" id="powerMeterPic" multiple style="float: left;"/>
+    </div>
+  <br><br>
+  <div  style="width: 300px;">
+      <input type="submit" value="ثبت نهایی سفارش"  style="float: left;"/>
+    </div>
+</form>
+ 
+</body>
+</html>
